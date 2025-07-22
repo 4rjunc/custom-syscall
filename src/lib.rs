@@ -23,6 +23,6 @@ pub fn process_instruction(
         "sol_remaining_compute_units {:?}",
         sol_remaining_compute_units()
     );
-    msg!("sol_get_magic_number {:?}", sol_get_magic_number());
+    msg!("sol_get_magic_number {:?}", sol_get_magic_number()); // CUSTOM ONE
     Ok(())
 }
