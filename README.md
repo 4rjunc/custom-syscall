@@ -219,6 +219,28 @@ solana-define-syscall = { path = "/Users/arjunc/Documents/solana/svm/solana-sdk/
 ```
 [Link to code](https://github.com/4rjunc/agave/blob/e1c80c5b4848b181eac42ed6d113aa2994e57896/Cargo.toml#L418)
 
+This is another error you might get while building the program
+
+```
+error[E0451]: field `start` of struct `BumpAllocator` is private
+  --> src/lib.rs:12:1
+   |
+12 | entrypoint!(process_instruction);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ private field
+   |
+
+```
+
+Fix in `solana-sdk/program-entrypoint/src/lib.rs`
+
+```rust
+pub struct BumpAllocator {
+    pub start: usize,
+    pub len: usize,
+}
+```
+[Link to code](https://github.com/4rjunc/solana-sdk/blob/62c9fc28cd556a2d5c4695b5b550c6967e2e6962/program-entrypoint/src/lib.rs#L301)
+
 ## Running the Implementation
 
 These are the code changes. Now let's run the local validator, build, deploy, and send a transaction to the program.
